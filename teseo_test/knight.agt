@@ -1,0 +1,105 @@
+  public int hello;
+
+/**
+  *	PF:=ParedFrente, PD:=ParedDerecha, PA:=ParedAtras, PI:=ParedIzquierda
+  **/
+  public int accion( boolean PF, boolean PD, boolean PA, boolean PI, boolean MT ){
+     	int dir = 0;
+     	while( (dir==0 && PF) || (dir==1 && PD) || (dir==2 && PA) || (dir==3 && PI) ){
+       		dir = (int)(4*Math.random());
+     	};	
+     	return dir;
+  }
+
+import java.util.ArrayList;
+
+public class Nodo{
+	private Nodo nodF;
+	private Nodo nodD;
+	private Nodo nodA;
+	private Nodo nodI;
+
+	private Nodo actual;
+	private Nodo anterior;
+	
+	private int dir;  //Un indicador que muesta que direccion se tomo en este nodo
+	private int x;	//si se mueve a la derecha o a la izquierda cambia X segun corresponda el movimiento
+	private int y;	//si se mueve hacia arriba o abajo cambia Y segun corresponda el movimiento
+	
+	public int getDir(){
+		return this.dir;
+	}
+	public void marcarDir(int dir){
+		this.dir = dir;
+	}
+	
+	public int getX(){
+		return this.x;
+	}
+	public int getY(){
+		return this.y;
+	}
+	
+	public void setX(int x){
+		this.x = x;
+	}
+	public void setY(int y){
+		this.y = y;
+	}
+
+	public Nodo getNodF(){
+		return this.nodF;
+	} 
+	public Nodo getNodD(){
+		return this.nodD;
+	}
+	public Nodo getNodA(){
+		return this.nodA;
+	}
+	public Nodo getNodI(){
+		return this.nodI;
+	}
+	
+	public void crearNodF(Nodo nod){
+		nod.setX(actual.getX());
+		nod.setY(actual.getY() + 1);
+		marcarDir(0);	
+	}
+	public void crearNodD(Nodo nod){
+		nod.setX(actual.getX() + 1);
+		nod.setY(actual.getY());
+		marcarDir(1);
+	}
+	public void crearNodA(Nodo nod){
+		nod.setX(actual.getX());
+		nod.setY(actual.getY() - 1);
+		marcarDir(2);
+	}
+	public void crearNodI(Nodo nod){
+		nod.setX(actual.getX() - 1);
+		nod.setY(actual.getY());
+		marcarDir(3);
+	}	
+
+	public void moverNodF(Nodo nod){		
+		this.nodF = nod;
+		this.nodF.anterior = this.actual;
+		this.nodF.actual = nod;
+	}
+	public void moverNodD(Nodo nod){
+		this.nodD = nod;
+		this.nodD.anterior = this.actual;
+		this.nodD.actual = nod;
+	}
+	public void moverNodA(Nodo nod){
+		this.nodA = nod;
+		this.nodA.anterior = this.actual;
+		this.nodA.actual = nod;
+	}
+	public void moverNodI(Nodo nod){
+		this.nodI=nod;
+		this.nodI.anterior = this.actual;
+		this.nodI.actual = nod;
+	}	
+	
+}

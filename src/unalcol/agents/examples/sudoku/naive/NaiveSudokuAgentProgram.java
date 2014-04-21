@@ -42,4 +42,11 @@ public class NaiveSudokuAgentProgram implements AgentProgram{
     }
     return null;
   }
+
+   
+
+    @Override
+    public int accion(boolean PF, boolean PD, boolean PA, boolean PI, boolean AF, boolean AD, boolean AA, boolean AI, boolean MT) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

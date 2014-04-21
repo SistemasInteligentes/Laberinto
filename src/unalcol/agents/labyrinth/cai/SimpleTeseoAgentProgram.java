@@ -33,7 +33,7 @@ public abstract class SimpleTeseoAgentProgram  implements AgentProgram{
     cmd.clear();
   }
 
-  public abstract int accion(boolean PF, boolean PD, boolean PA, boolean PI, boolean MT );
+  public abstract int accion(boolean PF, boolean PD, boolean PA, boolean PI, boolean AF, boolean AD, boolean AA, boolean AI, boolean MT );
 
   /**
    * execute
@@ -54,8 +54,17 @@ public abstract class SimpleTeseoAgentProgram  implements AgentProgram{
           booleanValue();
       boolean MT = ( (Boolean) p.getAttribute(language.getPercept(4))).
           booleanValue();
+      boolean AF = ( (Boolean) p.getAttribute(language.getPercept(5))).
+          booleanValue();
+      boolean AD = ( (Boolean) p.getAttribute(language.getPercept(6))).
+          booleanValue();
+      boolean AA = ( (Boolean) p.getAttribute(language.getPercept(7))).
+          booleanValue();
+      boolean AI = ( (Boolean) p.getAttribute(language.getPercept(8))).
+          booleanValue();
       
-      int d = accion(PF, PD, PA, PI, MT);
+      
+      int d = accion(PF, PD, PA, PI, AF, AD, AA, AI, MT);
       if (0 <= d && d < 4) {
         for (int i = 1; i <= d; i++) {
           cmd.add(language.getAction(3)); //rotate
